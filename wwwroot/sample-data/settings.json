@@ -1,0 +1,338 @@
+{
+  "init": false,
+
+
+  "log": true,
+  "modsFolder": "F76Mods",
+  "nwFiles": [
+    "..\\x3daudio1_7.dll",
+    "..\\dxgi.dll",
+    "..\\d3d11.dll"
+  ],
+  "iniFilesDir": "%USERPROFILE%\\Documents\\My Games\\Fallout 76",
+  "defaultGameLocations": [
+    "Program Files",
+    "Program Files (x86)",
+    "Games"
+  ],
+  "defaultInstallPath": "Bethesda.net Launcher\\Games\\Fallout76\\Data",
+  "gamePath": "C:\\Games\\Fallout76\\Data",
+  "strings": [
+    "NW_ru.DLSTRINGS",
+    "NW_ru.ILSTRINGS",
+    "NW_ru.STRINGS",
+    "SeventySix_ru.DLSTRINGS",
+    "SeventySix_ru.ILSTRINGS",
+    "SeventySix_ru.STRINGS"
+  ],
+  "configFixes": [
+    {
+      "name": "camera",
+      "files": [
+        {
+          "file": "Fallout76Prefs.ini",
+          "sections": [
+            {
+              "name": "Display",
+              "values": [
+                {
+                  "name": "fDefault1stPersonFOV",
+                  "value": 105
+                },
+                {
+                  "name": "fDefaultWorldFOV",
+                  "value": 105
+                }
+              ]
+            },
+            {
+              "name": "Interface",
+              "values": [
+                {
+                  "name": "fDefault1stPersonFOV",
+                  "value": 105
+                },
+                {
+                  "name": "fDefaultWorldFOV",
+                  "value": 105
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "file": "Fallout76Custom.ini",
+          "sections": [
+            {
+              "name": "Camera",
+              "values": [
+                {
+                  "name": "fDefaultFOV",
+                  "value": 105
+
+                },
+                {
+                  "name": "fOverShoulderPosX",
+                  "value": 10
+
+                },
+                {
+                  "name": "fOverShoulderPosZ",
+                  "value": 10
+
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "general",
+      "files": [
+        {
+          "file": "Fallout76Prefs.ini",
+          "sections": [
+            {
+              "name": "Display",
+              "values": [
+                {
+                  "name": "bFull Screen",
+                  "value": 0
+                },
+                {
+                  "name": "iPresentInterval",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "file": "Fallout76Custom.ini",
+          "sections": [
+            {
+              "name": "General",
+              "values": [
+                {
+                  "name": "sIntroSequence",
+                  "value": 0
+
+                },
+                {
+                  "name": "uMainMenuDelayBeforeAllowSkip",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mouseFix",
+      "files": [
+        {
+          "file": "Fallout76.ini",
+          "sections": [
+            {
+              "name": "Controls",
+              "values": [
+                {
+                  "name": "fMouseHeadingSensitivityMax",
+                  "value": 0.005565
+                },
+                {
+                  "name": "fMouseHeadingXScale",
+                  "value": 0.0210
+                },
+                {
+                  "name": "fMouseHeadingYScale",
+                  "value": 0.03738
+                },
+                {
+                  "name": "fIronSightsPitchSpeedRatio",
+                  "value": 1
+                },
+                {
+                  "name": "fPitchSpeedRatio",
+                  "value": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "file": "Fallout76Prefs.ini",
+          "sections": [
+            {
+              "name": "Controls",
+              "removeBatch": [
+                "fMouseHeadingSensitivityMax",
+                "fMouseHeadingXScale",
+                "fMouseHeadingYScale",
+                "fIronSightsPitchSpeedRatio",
+                "fPitchSpeedRatio"
+              ],
+              "values": [
+                {
+                  "name": "fMouseHeadingSensitivity",
+                  "value": 0.0300
+                },
+                {
+                  "name": "fMouseHeadingSensitivityY",
+                  "value": 0.0300
+                }
+              ]
+
+            },
+            {
+              "name": "Main",
+              "values": [
+                {
+                  "name": "fIronSightsFOVRotateMult",
+                  "value": 2.136363636
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "file": "Fallout76Custom.ini",
+          "sections": [
+            {
+              "name": "Controls",
+              "values": [
+                {
+                  "name": "fMouseHeadingSensitivityMax",
+                  "value": 0.005565
+                },
+                {
+                  "name": "fMouseHeadingXScale",
+                  "value": 0.0210
+                },
+                {
+                  "name": "fMouseHeadingYScale",
+                  "value": 0.03738
+                },
+                {
+                  "name": "fIronSightsPitchSpeedRatio",
+                  "value": 1
+                },
+                {
+                  "name": "fPitchSpeedRatio",
+                  "value": 1
+                },
+                {
+                  "name": "bMouseAcceleration",
+                  "value": 0
+                },
+                {
+                  "name": "fIronSightsFOVRotateMult",
+                  "value": 2.13636374
+                }
+              ]
+            },
+            {
+              "name": "Main",
+              "values": [
+                {
+                  "name": "fIronSightsFOVRotateMult",
+                  "value": 2.13636374
+                }
+              ]
+            }
+          ]
+        }
+
+      ]
+    },
+    {
+      "name": "blurFix",
+      "files": [
+        {
+          "file": "Fallout76Custom.ini",
+          "sections": [
+            {
+              "name": "Display",
+              "values": [
+                {
+                  "name": "bFull Screen",
+                  "value": 1
+                },
+                {
+                  "name": "bFullScreen",
+                  "value": 1
+                },
+                {
+                  "name": "bBorderless",
+                  "value": 0
+                },
+                {
+                  "name": "fDOFBlendRatio",
+                  "value": 0
+                },
+                {
+                  "name": "fDOFMinFocalCoefDist",
+                  "value": 999999
+                },
+                {
+                  "name": "fDOFMaxFocalCoefDist",
+                  "value": 99999999
+                },
+                {
+                  "name": "fDOFDynamicFarRange",
+                  "value": 99999999
+                },
+                {
+                  "name": "fDOFCenterWeightInt",
+                  "value": 0
+                },
+                {
+                  "name": "fDOFFarDistance",
+                  "value": 99999999
+                }
+              ]
+            },
+            {
+              "name": "ImageSpace",
+              "values": [
+                {
+                  "name": "bDoDepthOfField",
+                  "value": 0
+                },
+                {
+                  "name": "bDoRadialBlur",
+                  "value": 0
+                },
+                {
+                  "name": "iRadialBlurLevel",
+                  "value": 0
+                },
+                {
+                  "name": "bDynamicDepthOfField",
+                  "value": 0
+                },
+                {
+                  "name": "bMBEnable",
+                  "value": 0
+                },
+                {
+                  "name": "bScreenSpaceBokeh",
+                  "value": 0
+                },
+                {
+                  "name": "bLensFlare",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        }
+
+      ]
+    }
+  ]
+}
