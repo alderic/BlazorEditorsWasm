@@ -1,0 +1,62 @@
+@using System.ComponentModel.DataAnnotations
+@typeparam TValue
+@inherits OwningComponentBase
+
+
+<EditForm Model="@DataContext"
+          OnValidSubmit="@(context => OnValidSubmit.InvokeAsync(context))">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    @foreach (var field in Properties)
+    {
+        @RenderFormElement(field);
+    }
+
+    <button type="submit">Submit</button>
+</EditForm>
+@code {
+        [Parameter] public TValue DataContext { get; set; }
+
+        [Parameter] public EventCallback OnValidSubmit { get; set; }
+
+        public System.Reflection.PropertyInfo[] Properties = new System.Reflection.PropertyInfo[] { };
+
+        private FormGeneratorComponentsRepository _repo;
+
+
+        protected override void OnInitialized()
+        {
+            _repo = ScopedServices.GetService(typeof(FormGeneratorComponentsRepository)) as FormGeneratorComponentsRepository;
+        }
+
+        public void HandleValidSubmit()
+        {
+
+        }
+
+        protected override void OnParametersSet()
+        {
+            Properties = typeof(TValue).GetProperties();
+        }
+
+        public RenderFragment RenderFormElement(System.Reflection.PropertyInfo propInfoValue) => builder =>
+        {
+            builder.OpenComponent(0, _repo.FormElement);
+
+            builder.AddAttribute(1, nameof(FormElement.FieldIdentifier), propInfoValue);
+
+            builder.CloseComponent();
+        };
+
+        public bool HasLabel(System.Reflection.PropertyInfo propInfoValue)
+        {
+            var componentType = _repo.GetComponent(propInfoValue.PropertyType.ToString());
+
+            var dd = componentType
+                    .GetCustomAttributes(typeof(DisplayAttribute), false)
+                 .FirstOrDefault() as DisplayAttribute;
+
+            return dd != null && dd.Name.Length > 0;
+        }
+}
