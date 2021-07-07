@@ -1,0 +1,4 @@
+Why do the Pull, Push and Sync actions never finish?#
+This usually means there is no credential management configured in Git and you're not getting credential prompts for some reason.
+
+You can always set up a credential helper(https://help.github.com/articles/caching-your-github-password-in-git/) in order to pull and push from a remote server without having VS Code prompt for your credentials each time
