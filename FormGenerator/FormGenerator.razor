@@ -42,10 +42,12 @@
 
         public RenderFragment RenderFormElement(System.Reflection.PropertyInfo propInfoValue) => builder =>
         {
-            builder.OpenComponent(0, _repo.FormElement);
+var t = typeof(FormElement<>);
+var genericType = t.MakeGenericType(new[] { propInfoValue.PropertyType});
 
-            builder.AddAttribute(1, nameof(FormElement.FieldIdentifier), propInfoValue);
-
+            
+            builder.OpenComponent(0, genericType);
+            builder.AddAttribute(1, nameof(FormElement<int>.FieldIdentifier), propInfoValue);
             builder.CloseComponent();
         };
 

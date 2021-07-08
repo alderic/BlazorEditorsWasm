@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using BlazorEditorsWasm.Providers;
 using BlazorFluentUI;
+using Microsoft.AspNetCore.Components.Forms;
 
 namespace BlazorEditorsWasm
 {
@@ -23,6 +24,16 @@ namespace BlazorEditorsWasm
             builder.Services.AddSingleton(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             builder.Services.AddSingleton<FileProvider>();
             builder.Services.AddSingleton<F76Manager>();
+
+            builder.Services.AddSingleton(new FormGeneratorComponentsRepository(
+                  new Dictionary<string, Type>()
+                  {
+                        {typeof(string).ToString(), typeof(InputText) },
+                         {typeof(int).ToString(), typeof(InputText) },
+                        {typeof(DateTime).ToString(), typeof(InputDate<>) },
+                        {typeof(bool).ToString(), typeof(InputCheckbox) },
+                        {typeof(decimal).ToString(), typeof(InputNumber<>) }
+                  }, null));
 
             await builder.Build().RunAsync();
     

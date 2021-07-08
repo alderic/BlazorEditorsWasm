@@ -11,7 +11,7 @@
 
 @CreateComponent(FieldIdentifier)
 
-@code{
+@code {
 
         private string _Label;
         private FormGeneratorComponentsRepository _repo;
@@ -91,15 +91,18 @@
                 Type[] typeArgs = { propInfoValue.PropertyType };
                 elementType = elementType.MakeGenericType(typeArgs);
             }
-
+builder.OpenComponent(0, elementType);
+return;
             // Activate the the Type so that the methods can be called
             var instance = Activator.CreateInstance(elementType);
 
         // Get the generic CreateFormComponent and set the property type of the model and the elementType that is rendered
             MethodInfo method = typeof(FormElement<TElement>).GetMethod(nameof(FormElement<TElement>.CreateFormComponent));
-            MethodInfo genericMethod = method.MakeGenericMethod(propInfoValue.PropertyType, elementType);
+           // MethodInfo genericMethod = method.MakeGenericMethod(propInfoValue.PropertyType, elementType);
             // Execute the method with the following parameters
-            genericMethod.Invoke(this, new object[] { this, CascadedEditContext.Model, propInfoValue, builder, instance });
+        //   method.Invoke(this, new object[] { this, CascadedEditContext.Model, propInfoValue, builder, instance });
+            CreateFormComponent(this, CascadedEditContext.Model, propInfoValue, builder, (InputBase<TElement>)instance);
+      
         };
 
         /// 
@@ -114,10 +117,10 @@
         /// THe control instance
         public void CreateFormComponent(object target,
             object dataContext,
-            PropertyInfo propInfoValue, RenderTreeBuilder builder,  Type elementType)
+            PropertyInfo propInfoValue, RenderTreeBuilder builder,  InputBase<TElement> instance)
         {
             // Create the component based on the mapped Element Type
-            builder.OpenComponent(0, elementType);
+         /*   builder.OpenComponent(0, elementType);
 
             // Bind the value of the input base the the propery of the model instance
             var s = propInfoValue.GetValue(dataContext);
@@ -142,16 +145,16 @@
 
             CheckForInterfaceActions(this, CascadedEditContext.Model, propInfoValue, builder, instance, 6);
 
-            builder.CloseComponent();
+            builder.CloseComponent();*/
 
         }
-
+ /*
         private void CheckForInterfaceActions(object target,
             object dataContext,
             PropertyInfo propInfoValue, RenderTreeBuilder builder, InputBase instance, int indexBuilder)
         {
             // overriding the default classes for FormElement
-            if (TypeImplementsInterface(typeof(TElement), typeof(IRenderAsFormElement)))
+           if (TypeImplementsInterface(typeof(TElement), typeof(IRenderAsFormElement)))
             {
                 this.CssClasses.AddRange((instance as IRenderAsFormElement).FormElementClasses);
             }
@@ -162,7 +165,7 @@
                 (instance as IRenderChildren).RenderChildren(builder, indexBuilder, dataContext, propInfoValue);
             }
         }
-
+*/
         /// 
         /// Merges the default control classes with the  'class' key
         /// 

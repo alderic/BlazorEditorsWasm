@@ -1,16 +1,29 @@
 @page "/counter"
+@using BlazorEditorsWasm.FormGenerator
 
 <h1>Counter</h1>
 
 <p>Current count: @currentCount</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
-
+<FormGenerator DataContext="@tst" ></FormGenerator>
 @code {
+    public class TestClass {
+        public string P1 {get;set;}
+        public int P2 {get;set;}
+        public DateTime P3 {get;set;}
+    }
+
+     private TestClass tst = new TestClass();
     private int currentCount = 0;
 
     private void IncrementCount()
     {
         currentCount++;
+    }
+
+    private void HandleValidSubmit(/*EditContext context*/)
+    {
+        // save your changes
     }
 }
